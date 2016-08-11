@@ -7,7 +7,28 @@
 <title>Login Success Page</title>
 </head>
 <body>
-<h3>Hi Gabriel, Login successful.</h3>
-<a href="login.html">Login Page</a>
+
+<% 
+
+	String userName = null;
+	Cookie[] cookies = request.getCookies();
+	//check all of the cookies to see if one of them has the username parameter in them
+	for(Cookie cookie: cookies) {
+		if(cookie.getName().equals("user")) {
+			userName = cookie.getValue();
+		}
+	}
+	
+	//if no cookie has the username, send back to the login page
+	if(userName == null) response.sendRedirect("login.html");
+
+%>
+
+<h3>Hi <%=userName%>, Login successful.</h3>
+
+<form action="LogoutServlet" method="post">
+	<input type="submit" value="Logout" >
+</form>
+
 </body>
 </html>

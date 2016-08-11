@@ -7,6 +7,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,6 +49,10 @@ public class LoginServlet extends HttpServlet {
 		log("User="+user+"::password="+pwd);
 		
 		if(userID.equals(user) && password.equals(pwd)){
+			Cookie loginCookie = new Cookie("user", user);
+			//setting cookie to expire in 5 minutes
+			loginCookie.setMaxAge(5*30);
+			response.addCookie(loginCookie);
 			response.sendRedirect("LoginSuccess.jsp");
 		}else{
 			response.sendRedirect("LoginFail.jsp");

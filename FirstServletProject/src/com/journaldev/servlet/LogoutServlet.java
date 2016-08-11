@@ -22,7 +22,7 @@ public class LogoutServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.setContentType("test/html");
+		response.setContentType("text/html");
 		Cookie loginCookie = null;
 		Cookie[] cookies = request.getCookies();
 		//find the login cookie
@@ -36,7 +36,12 @@ public class LogoutServlet extends HttpServlet {
 		if(loginCookie != null) {
 			loginCookie.setMaxAge(0);
         	response.addCookie(loginCookie);
-		}
-		response.sendRedirect("login.html");
+        	RequestDispatcher rd = request.getRequestDispatcher("login.html");
+        	PrintWriter out = response.getWriter();
+        	out.println("<font color=blue>You have successfully been logged out of the application</font>");
+        	rd.include(request, response);
+		}else {
+			response.sendRedirect("login.html");
+		}	
 	}	
 }

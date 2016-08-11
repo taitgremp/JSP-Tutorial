@@ -9,23 +9,31 @@
 <body>
 
 <% 
-
-	String userName = null;
-	Cookie[] cookies = request.getCookies();
-	//check all of the cookies to see if one of them has the username parameter in them
-	for(Cookie cookie: cookies) {
-		if(cookie.getName().equals("user")) {
-			userName = cookie.getValue();
-		}
+	//allow access only if session exists
+	String user = null;
+	if(session.getAttribute("user") == null) {
+		response.sendRedirect("login.html");
+	}else {
+		user = (String) session.getAttribute("user");
 	}
-	
-	//if no cookie has the username, send back to the login page
-	if(userName == null) response.sendRedirect("login.html");
-
+	String userName = null;
+	String sessionID = null;
+	Cookie[] cookies = request.getCookies();
+	if(cookies != null) { 
+		for(Cookie cookie: cookies) {
+			if(cookie.getName().equals("user")) {
+				userName = cookie.getValue();
+			}
+			if(cookie.getName().equals("JSESSIONID")) {
+				sessionID = cookie.getValue();
+			}
+		}//end for cookies
+	}//else no cookies
 %>
 
-<h3>Hi <%=userName%>, Login successful.</h3>
-
+<h3>Hi <%=userName%>, Login successful. <BR> Your Session ID=<%=sessionID %></h3>
+<BR>
+<a href="CheckoutPage.jsp">Checkout Page</a>
 <form action="LogoutServlet" method="post">
 	<input type="submit" value="Logout" >
 </form>

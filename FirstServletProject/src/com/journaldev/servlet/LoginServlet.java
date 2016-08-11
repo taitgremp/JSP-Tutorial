@@ -11,10 +11,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-/**
- * Servlet Tutorial - Servlet Example
- */
 @WebServlet(
 		description = "Login Servlet", 
 		urlPatterns = { "/LoginServlet" }, 
@@ -49,10 +47,12 @@ public class LoginServlet extends HttpServlet {
 		log("User="+user+"::password="+pwd);
 		
 		if(userID.equals(user) && password.equals(pwd)){
-			Cookie loginCookie = new Cookie("user", user);
-			//setting cookie to expire in 5 minutes
-			loginCookie.setMaxAge(5*30);
-			response.addCookie(loginCookie);
+			HttpSession session = request.getSession(); 
+			session.setAttribute("user", userID); 
+			session.setMaxInactiveInterval(5*30);
+			Cookie userName = new Cookie("user", user);
+			userName.setMaxAge(5*30);
+			response.addCookie(userName);
 			response.sendRedirect("LoginSuccess.jsp");
 		}else{
 			response.sendRedirect("LoginFail.jsp");

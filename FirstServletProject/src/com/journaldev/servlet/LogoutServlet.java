@@ -21,27 +21,26 @@ public class LogoutServlet extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		response.setContentType("text/html");
-		Cookie loginCookie = null;
+		
 		Cookie[] cookies = request.getCookies();
 		//find the login cookie
 		for(Cookie cookie: cookies) {
-			if(cookie.getName().equals("user")) {
-				loginCookie = cookie;
+			if(cookie.getName().equals("JSESSIONID")) {
+				System.out.println("JSESSIONID=" + cookie.getValue());
 				break;
 			}
 		}
 		
-		if(loginCookie != null) {
-			loginCookie.setMaxAge(0);
-        	response.addCookie(loginCookie);
-        	RequestDispatcher rd = request.getRequestDispatcher("login.html");
-        	PrintWriter out = response.getWriter();
-        	out.println("<font color=blue>You have successfully been logged out of the application</font>");
-        	rd.include(request, response);
-		}else {
-			response.sendRedirect("login.html");
-		}	
+		//invalidate the session if it exists
+		HttpSession session = request.getSession();
+		System.out.println("User=" + session.getAttribute("user"));
+		if(session != null) {
+			session.invalidate();
+		}
+		RequestDispatcher rd = request.getRequestDispatcher("login.html");
+		PrintWriter out = response.getWriter();
+		out.println("<font color=blue>You have been successfully logged out of the application</font>");
+		rd.include(request, response);
 	}	
 }

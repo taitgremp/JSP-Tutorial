@@ -50,10 +50,7 @@ public class LoginServlet extends HttpServlet {
 		if(userID.equals(user) && password.equals(pwd)){
 			response.sendRedirect("LoginSuccess.jsp");
 		}else{
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.html");
-			PrintWriter out= response.getWriter();
-			out.println("<font color=red>Either user name or password is wrong.</font>");
-			rd.include(request, response);
+			response.sendRedirect("LoginFail.jsp");
 			
 		}
 		

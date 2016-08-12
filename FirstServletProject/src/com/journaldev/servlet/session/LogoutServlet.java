@@ -1,4 +1,4 @@
-package com.journaldev.servlet;
+package com.journaldev.servlet.session;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,7 +33,7 @@ public class LogoutServlet extends HttpServlet {
 		}
 		
 		//invalidate the session if it exists
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 		System.out.println("User=" + session.getAttribute("user"));
 		if(session != null) {
 			session.invalidate();

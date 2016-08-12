@@ -1,4 +1,4 @@
-package com.journaldev.servlet;
+package com.journaldev.servlet.session;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,18 +21,8 @@ import javax.servlet.http.HttpSession;
 				@WebInitParam(name = "password", value = "journaldev")
 		})
 public class LoginServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
-       
-    
-	public void init() throws ServletException {
-		//we can create DB connection resource here and set it to Servlet context
-		if(getServletContext().getInitParameter("dbURL").equals("jdbc:mysql://localhost/mysql_db") &&
-				getServletContext().getInitParameter("dbUser").equals("mysql_user") &&
-				getServletContext().getInitParameter("dbUserPwd").equals("mysql_pwd"))
-		getServletContext().setAttribute("DB_Success", "True");
-		else throw new ServletException("DB Connection error");
-	}
-
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -55,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 			response.addCookie(userName);
 			response.sendRedirect("LoginSuccess.jsp");
 		}else{
-			response.sendRedirect("LoginFail.jsp");
+			response.sendRedirect("failedLogin.html");
 			
 		}
 		

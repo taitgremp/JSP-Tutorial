@@ -1,7 +1,9 @@
 package com.journaldev.servlet.filters;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -20,6 +22,7 @@ import javax.servlet.http.HttpSession;
 public class AuthenticationFilter implements Filter {
 
 	private ServletContext context;
+	private List<String> ignoreURIs = Arrays.asList("html", "LoginServlet", "RegisterUser.jsp", "NewUserServlet");
 	
 	@Override
 	public void init(FilterConfig fConfig) throws ServletException {
@@ -39,13 +42,23 @@ public class AuthenticationFilter implements Filter {
 		
 		HttpSession session = req.getSession(false);
 		
-		if(session == null && !(uri.endsWith("html") || uri.endsWith("LoginServlet")
-				|| uri.endsWith("RegisterUser.jsp") || uri.endsWith("NewUserServlet"))) {
+		if(session == null && !uriAuthorized(uri)) {
 			this.context.log("Unauthorized access to uri: " + uri);
 			resp.sendRedirect("login.html");
 		}else {
 			chain.doFilter(request, response);
 		}
+	}
+	
+	private boolean uriAuthorized(String uri) {
+		boolean ok = false;
+		for(String uriEnding: ignoreURIs) {
+			if(uri.endsWith(uriEnding)) {
+				ok = true;
+				break;
+			}
+		}
+		return ok;
 	}
 	
 	@Override

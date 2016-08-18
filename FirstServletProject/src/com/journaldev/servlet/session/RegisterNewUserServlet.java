@@ -31,7 +31,7 @@ public class RegisterNewUserServlet extends HttpServlet {
 		
 			HttpSession session = request.getSession(); 
 			session.setAttribute("user", user); 
-			session.setMaxInactiveInterval(5*30);
+			session.setMaxInactiveInterval(5*30); //5 minutes
 			Cookie userName = new Cookie("user", user);
 			userName.setMaxAge(5*30);
 			response.addCookie(userName);

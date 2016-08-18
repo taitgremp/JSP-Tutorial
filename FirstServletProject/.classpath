@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6.0_45">
-		<attributes>
-			<attribute name="owner.project.facets" value="java"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0">
-		<attributes>
-			<attribute name="owner.project.facets" value="jst.web"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="output" path="build/classes"/>
+  <classpathentry kind="src" path="src" including="**/*.java"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-annotations-api/7.0.70/tomcat-annotations-api-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-catalina-ant/7.0.70/tomcat-catalina-ant-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-coyote/7.0.70/tomcat-coyote-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-servlet-api/7.0.70/tomcat-servlet-api-7.0.70.jar" sourcepath="M2_REPO/org/apache/tomcat/tomcat-servlet-api/7.0.70/tomcat-servlet-api-7.0.70-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-juli/7.0.70/tomcat-juli-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-util/7.0.70/tomcat-util-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-api/7.0.70/tomcat-api-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-catalina/7.0.70/tomcat-catalina-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-catalina-ha/7.0.70/tomcat-catalina-ha-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-tribes/7.0.70/tomcat-tribes-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/jdt/core/compiler/ecj/4.4.2/ecj-4.4.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-el-api/7.0.70/tomcat-el-api-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-jasper-el/7.0.70/tomcat-jasper-el-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-jasper/7.0.70/tomcat-jasper-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-jsp-api/7.0.70/tomcat-jsp-api-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-dbcp/7.0.70/tomcat-dbcp-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-i18n-es/7.0.70/tomcat-i18n-es-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-i18n-fr/7.0.70/tomcat-i18n-fr-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-i18n-ja/7.0.70/tomcat-i18n-ja-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-jdbc/7.0.70/tomcat-jdbc-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat7-websocket/7.0.70/tomcat7-websocket-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-websocket-api/7.0.70/tomcat-websocket-api-7.0.70.jar"/>
+  <classpathentry kind="var" path="M2_REPO/mysql/mysql-connector-java/5.1.6/mysql-connector-java-5.1.6.jar"/>
 </classpath>

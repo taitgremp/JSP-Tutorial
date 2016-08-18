@@ -1,0 +1,5 @@
+com\journaldev\servlet\filters\AuthenticationFilter.class
+com\journaldev\servlet\session\LoginServlet.class
+com\journaldev\servlet\session\RegisterNewUserServlet.class
+com\journaldev\servlet\session\LogoutServlet.class
+com\journaldev\servlet\filters\RequestLoggingFilter.class
